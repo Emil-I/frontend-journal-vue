@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-    <signinFrame title='Signin' />
-    <signupFrame title='Signup' />
+    <signinFrame
+      title='Signin'
+    />
+
+    <signupFrame
+      title='Signup'
+    />
   </div>
 </template>
 

@@ -34,7 +34,11 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          // vue-loader options go here
+          loaders: {
+            scss: 'vue-style-loader!css-loader!sass-loader',
+            sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+          },
+          extractCSS: true
         }
       },
       {
@@ -114,11 +118,6 @@ if (NODE_ENV === 'production') {
           ],
           sourceMap: true
         }
-      }, {
-        loader: 'sass-loader',
-        options: {
-          sourceMap: NODE_ENV !== 'production'
-        }
       }]
     })
   });
@@ -169,11 +168,6 @@ if (NODE_ENV === 'production') {
             browsers: ['ie >= 8', 'last 4 version']
           })
         ],
-        sourceMap: true
-      }
-    }, {
-      loader: 'sass-loader',
-      options: {
         sourceMap: true
       }
     }]
