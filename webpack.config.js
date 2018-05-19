@@ -38,7 +38,14 @@ module.exports = {
             scss: 'vue-style-loader!css-loader!sass-loader',
             sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
           },
-          extractCSS: true
+          extractCSS: true,
+          preserveWhitespace: false,
+          postcss: [autoprefixer({
+            browsers: ['last 7 versions']
+          })],
+          // loaders: {
+          //   'js': 'babel-loader?presets[]=es2015'
+          // }
         }
       },
       {
@@ -99,77 +106,77 @@ module.exports = {
 if (NODE_ENV === 'production') {
   console.log('NODE_ENV = production');
 
-  module.exports.module.rules.push({
-    test: /\.scss/,
-    loader: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: [{
-        loader: 'css-loader',
-        options: {
-          sourceMap: NODE_ENV !== 'production'
-        }
-      }, {
-        loader: 'postcss-loader',
-        options: {
-          plugins: [
-            autoprefixer({
-              browsers: ['ie >= 8', 'last 4 version']
-            })
-          ],
-          sourceMap: true
-        }
-      }]
-    })
-  });
+  // module.exports.module.rules.push({
+  //   test: /\.scss/,
+  //   loader: ExtractTextPlugin.extract({
+  //     fallback: 'style-loader',
+  //     use: [{
+  //       loader: 'css-loader',
+  //       options: {
+  //         sourceMap: NODE_ENV !== 'production'
+  //       }
+  //     }, {
+  //       loader: 'postcss-loader',
+  //       options: {
+  //         plugins: [
+  //           autoprefixer({
+  //             browsers: ['ie >= 8', 'last 4 version']
+  //           })
+  //         ],
+  //         sourceMap: true
+  //       }
+  //     }]
+  //   })
+  // });
 
-  module.exports.module.rules.push({
-    test: /\.css/,
-    loader: ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: [{
-        loader: 'css-loader',
-        options: {
-          sourceMap: NODE_ENV !== 'production'
-        }
-      }]
-    })
-  });
+  // module.exports.module.rules.push({
+  //   test: /\.css/,
+  //   loader: ExtractTextPlugin.extract({
+  //     fallback: 'style-loader',
+  //     use: [{
+  //       loader: 'css-loader',
+  //       options: {
+  //         sourceMap: NODE_ENV !== 'production'
+  //       }
+  //     }]
+  //   })
+  // });
   module.exports.plugins.unshift(
     new ExtractTextPlugin('[name].css')
   );
 } else {
   console.log('NODE_ENV = development');
 
-  module.exports.module.rules.push({
-    test: /\.css/,
-    use: [{
-      loader: 'style-loader'
-    }, {
-      loader: 'css-loader',
-      options: {
-        sourceMap: true
-      }
-    }]
-  });
-  module.exports.module.rules.push({
-    test: /\.scss/,
-    use: [{
-      loader: 'style-loader'
-    }, {
-      loader: 'css-loader',
-      options: {
-        sourceMap: true
-      }
-    }, {
-      loader: 'postcss-loader',
-      options: {
-        plugins: [
-          autoprefixer({
-            browsers: ['ie >= 8', 'last 4 version']
-          })
-        ],
-        sourceMap: true
-      }
-    }]
-  });
+  // module.exports.module.rules.push({
+  //   test: /\.css/,
+  //   use: [{
+  //     loader: 'style-loader'
+  //   }, {
+  //     loader: 'css-loader',
+  //     options: {
+  //       sourceMap: true
+  //     }
+  //   }]
+  // });
+  // module.exports.module.rules.push({
+  //   test: /\.scss/,
+  //   use: [{
+  //     loader: 'style-loader'
+  //   }, {
+  //     loader: 'css-loader',
+  //     options: {
+  //       sourceMap: true
+  //     }
+  //   }, {
+  //     loader: 'postcss-loader',
+  //     options: {
+  //       plugins: [
+  //         autoprefixer({
+  //           browsers: ['ie >= 8', 'last 4 version']
+  //         })
+  //       ],
+  //       sourceMap: true
+  //     }
+  //   }]
+  // });
 }
