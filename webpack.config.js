@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
@@ -20,14 +20,17 @@ module.exports = {
     library: '[name]'
   },
 
-  watch: NODE_ENV === 'production',
+  watch: NODE_ENV === 'development',
 
-  devtool: NODE_ENV === 'production' ? 'eval' : false,
+  performance: {
+    hints: NODE_ENV === 'production' ? "warning" : false
+  },
+
+  devtool: NODE_ENV === 'production' ? '#source-map' : '#eval-source-map',
 
   devServer: {
     open: true
   },
-
 
   module: {
     rules: [{
@@ -42,17 +45,16 @@ module.exports = {
           preserveWhitespace: false,
           postcss: [autoprefixer({
             browsers: ['last 7 versions']
-          })],
-          // loaders: {
-          //   'js': 'babel-loader?presets[]=es2015'
-          // }
+          })]
         }
       },
+
       {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/,
       },
+
       {
         test: /\.(png|jpg|jpeg|mp4|ovg|webm|svg|ttf|eot|woff|woff2)(\?.*)?$/,
         use: [{
@@ -72,10 +74,6 @@ module.exports = {
     }
   },
 
-  performance: {
-    hints: NODE_ENV === 'production' ? "warning" : false
-  },
-
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'index/dev.html'),
@@ -93,90 +91,12 @@ module.exports = {
       hash: NODE_ENV === 'production',
       chunks: ['admin']
     }),
-    function() {
-      this.plugin('watch-run', function(watching, callback) {
-        console.log('Begin compile at ' + new Date());
-        callback();
-      })
-    },
     new HtmlWebpackHarddiskPlugin()
   ]
 };
 
 if (NODE_ENV === 'production') {
   console.log('NODE_ENV = production');
-
-  // module.exports.module.rules.push({
-  //   test: /\.scss/,
-  //   loader: ExtractTextPlugin.extract({
-  //     fallback: 'style-loader',
-  //     use: [{
-  //       loader: 'css-loader',
-  //       options: {
-  //         sourceMap: NODE_ENV !== 'production'
-  //       }
-  //     }, {
-  //       loader: 'postcss-loader',
-  //       options: {
-  //         plugins: [
-  //           autoprefixer({
-  //             browsers: ['ie >= 8', 'last 4 version']
-  //           })
-  //         ],
-  //         sourceMap: true
-  //       }
-  //     }]
-  //   })
-  // });
-
-  // module.exports.module.rules.push({
-  //   test: /\.css/,
-  //   loader: ExtractTextPlugin.extract({
-  //     fallback: 'style-loader',
-  //     use: [{
-  //       loader: 'css-loader',
-  //       options: {
-  //         sourceMap: NODE_ENV !== 'production'
-  //       }
-  //     }]
-  //   })
-  // });
-  module.exports.plugins.unshift(
-    new ExtractTextPlugin('[name].css')
-  );
 } else {
   console.log('NODE_ENV = development');
-
-  // module.exports.module.rules.push({
-  //   test: /\.css/,
-  //   use: [{
-  //     loader: 'style-loader'
-  //   }, {
-  //     loader: 'css-loader',
-  //     options: {
-  //       sourceMap: true
-  //     }
-  //   }]
-  // });
-  // module.exports.module.rules.push({
-  //   test: /\.scss/,
-  //   use: [{
-  //     loader: 'style-loader'
-  //   }, {
-  //     loader: 'css-loader',
-  //     options: {
-  //       sourceMap: true
-  //     }
-  //   }, {
-  //     loader: 'postcss-loader',
-  //     options: {
-  //       plugins: [
-  //         autoprefixer({
-  //           browsers: ['ie >= 8', 'last 4 version']
-  //         })
-  //       ],
-  //       sourceMap: true
-  //     }
-  //   }]
-  // });
 }
