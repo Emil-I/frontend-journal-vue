@@ -4,12 +4,7 @@
       <h1>{{title}}</h1>
     </div>
 
-
-    <ul v-for='book in books'>
-      <li>{{book.name}}</li>
-    </ul>
-
-    <div>{{message}}</div>
+    <!-- <div>{{message}}</div> -->
     <button @click='log' type="button" name="button">Log</button>
     <button @click='logTwo' type="button" name="button">LogTwo</button>
   </div>

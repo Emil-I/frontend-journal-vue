@@ -1,6 +1,7 @@
 import Vue from 'vue'
 
-let config = Vue.CONFIG;
+let envConfig = Vue.$envConfig;
+console.log('y');
 
 export default {
   name: 'signinFrame',
@@ -9,22 +10,23 @@ export default {
     title: String
   },
 
-  data: () => {
-    return {
-      message: 'test',
-      books: [{
-          name: 'name one'
-        },
-        {
-          name: 'name two'
-        }
-      ]
-    }
-  },
+  // data: () => {
+  //   return {
+  //     message: 'test',
+  //     books: [{
+  //         name: 'name one'
+  //       },
+  //       {
+  //         name: 'name two'
+  //       }
+  //     ]
+  //   }
+  // },
 
   methods: {
     log() {
-      console.log(config.apiUrl);
+      console.log(envConfig);
+      debugger
     },
 
     logTwo: () => {

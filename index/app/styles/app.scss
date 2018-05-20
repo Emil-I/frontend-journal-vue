@@ -13,6 +13,26 @@ h1 {
   margin: 0;
 }
 
-.modal-frame {
-  // display: none;
+.my-body {
+  .modal-frame {
+    display: none;
+  }
+}
+
+.my-body.signin {
+  .modal-frame.signin-frame {
+    display: block;
+  }
+}
+
+.my-body.signup {
+  .modal-frame.signup-frame {
+    display: block;
+  }
+}
+
+.my-body.recovery {
+  .modal-frame.recovery-frame {
+    display: block;
+  }
 }
