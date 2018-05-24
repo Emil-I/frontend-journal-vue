@@ -1,44 +1,45 @@
 <template>
-  <div id="app"
-       class='my-body'
-       :class="openModal"
-  >
+<div id="app" class='my-body'>
 
-  <button
-        @click='setOpenModal("signin")'
-        type="button" name="button"
-  >Signin</button>
-<br>
-  <button
-        @click='setOpenModal("signup")'
-        type="button" name="button"
-  >Signup</button>
-<br>
-  <button
-        @click='setOpenModal("close")'
-        type="button" name="button"
-  >Close</button>
-  <br><br><br>
+  <header class="header">
+    <ul class="header-menu-list">
+      <li class="header-menu-list__item">
+        <a class='header-menu-list__link' href="#">Signin</a>
+      </li>
+      <li class="header-menu-list__item">
+        <a class='header-menu-list__link' href="#">Signin</a>
+      </li>
+    </ul>
+  </header>
 
+  <div class="side-left">
 
-    <!-- ***************************** -->
-    <!-- MODALS -->
-    <!-- ***************************** -->
-    <signinFrame
-      class='modal-frame signin-frame'
-      title='Signin'
-    />
-
-    <signupFrame
-      class='modal-frame signup-frame'
-      title='Signup'
-    />
-
-    <recoveryFrame
-      class='modal-frame recovery-frame'
-      title='Recovery'
-    />
   </div>
+
+  <div class="main-container-video-and-svg-mask">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 285 80" preserveAspectRatio="xMidYMid slice">
+      <defs>
+      <mask id="mask" x="0" y="0" width="100%" height="100%" >
+        <rect x="0" y="0" width="100%" height="100%" />
+          <text x="30%"  y="40">WORDS</text>
+          <text id='text-two' x="57%"  y="46">about life</text>
+        </mask>
+    </defs>
+       <rect id='rect-two' x="0" y="0" width="100%" height="100%" />
+    </svg>
+
+    <video autoplay playsinline muted loop preload poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/oceanshot.jpg">
+  		<source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/ocean-small.webm" />
+      <source src="http://thenewcode.com/assets/videos/ocean-small.mp4" />
+  	</video>
+
+    <!-- <video autoplay playsinline muted loop preload poster="">
+      <source src="./assets/videos/tornado/Dodge-Tornado.webm" />
+      <source src="./assets/videos/tornado/Dodge-Tornado.mp4" />
+    </video> -->
+  </div>
+
+</div>
 </template>
 
 <!-- CONTROLLER -->
@@ -46,5 +47,6 @@
 
 <!-- STYLES -->
 <style lang="scss">
-   @import './styles/app.scss'
+@import "./styles/fonts.scss";
+@import './styles/app.scss';
 </style>
