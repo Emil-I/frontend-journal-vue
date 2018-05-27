@@ -1,7 +1,9 @@
 <template>
-    <div>
-      <h1>{{title}}</h1>
+  <div class="">
+    <div class="title-block">
+      <h1>Signup</h1>
     </div>
+  </div>
 </template>
 
 

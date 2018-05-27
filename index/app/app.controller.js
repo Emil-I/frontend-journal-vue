@@ -15,7 +15,7 @@ export default {
     setModal: function() {
       let windowHash = window.location.hash;
       windowHash = windowHash.slice(1);
-      windowHash !== '' ? this.openModal = windowHash : this.openModal = 'modals-close';
+      (windowHash !== '' && windowHash !== this.openModal) ? this.openModal = windowHash : this.openModal = 'modals-close';
     }
   },
 
@@ -49,5 +49,7 @@ export default {
  */
 
 function toggleModal(modal) {
-  modal !== "close" ? window.location.hash = modal : window.location.hash = '';
+  let lastValModalHash = window.location.hash;
+  lastValModalHash = lastValModalHash.slice(1);
+  (modal !== "close" && modal !== lastValModalHash) ? window.location.hash = modal : window.location.hash = '';
 };

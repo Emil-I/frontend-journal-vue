@@ -20,6 +20,10 @@ body {
   width: 100%;
 }
 
+.index-content {
+  width: 100%;
+}
+
 .main-wrapper {
   width: 98%;
   max-width: 1220px;
@@ -33,6 +37,21 @@ h1 {
 .my-body {
   .modal-frame {
     display: none;
+  }
+}
+
+.my-body {
+  &.recovery,
+  &.signin,
+  &.signup {
+    .index-content {
+      display: none;
+    }
+
+    .header-menu-list__link,
+    h1 {
+      color: white;
+    }
   }
 }
 
@@ -282,13 +301,10 @@ svg text#text_one {
 }
 
 svg #rect-two {
-  // fill: black;
   fill: whitesmoke;
 }
 
 svg rect {
-  // fill: white;
-  // fill: darkgoldenrod;
   fill: mintcream;
 }
 
