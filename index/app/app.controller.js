@@ -2,6 +2,8 @@ import signinFrame from './components/signin/signin.vue'
 import signupFrame from './components/signup/signup.vue'
 import recoveryFrame from './components/recovery/recovery.vue'
 
+// v-toggleModal:close='setModal'
+
 export default {
   name: 'app',
 

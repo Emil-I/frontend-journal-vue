@@ -37,6 +37,16 @@ h1 {
 .my-body {
   .modal-frame {
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    min-height: 100%;
+    overflow: auto;
+    // background-color: #00000073;
+    // background-color: #1acee273;
+    background-color: #00000073;
   }
 }
 
@@ -45,10 +55,28 @@ h1 {
   &.signin,
   &.signup {
     .index-content {
-      display: none;
+      // display: none;
+      // filter: blur(5px);
+      height: 100vh;
+      overflow: hidden;
     }
 
-    .header-menu-list__link,
+    .header {
+      z-index: 99999;
+    }
+
+    .main-container-video-and-svg-mask__center {
+      height: 100%;
+    }
+
+    svg {
+      opacity: 0;
+    }
+
+    .header-menu-list__link {
+      color: whitesmoke;
+    }
+
     h1 {
       color: white;
     }
@@ -71,6 +99,66 @@ h1 {
   .modal-frame.recovery-frame {
     display: block;
   }
+}
+
+.modal-frame-wrapper {
+  width: 100%;
+}
+
+.modal-frame-form {
+  width: 98%;
+  max-width: 340px;
+  margin: 20% auto 0;
+  // background-color: #2d2f79a8;
+  text-align: center;
+  border-radius: 3px;
+  // padding: 25px;
+}
+
+.modal-frame-wrapper-fields {
+  width: 72%;
+  margin: 0 auto;
+}
+
+.modal-frame-form__title {
+  font-family: Biko;
+  text-transform: uppercase;
+  font-size: 2.4em;
+  color: white;
+  letter-spacing: 14px;
+
+  &_padd-b {
+    padding-bottom: 30px;
+  }
+}
+
+.modal-frame-form__fields {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.modal-frame-form__input {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  padding: 5px;
+
+  &::-moz-placeholder {
+    color: whitesmoke;
+  }
+
+  &::-webkit-input-placeholder {
+    color: whitesmoke;
+  }
+}
+
+.modal-frame-form__button {
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 10px 35px;
+  color: whitesmoke;
+  margin-top: 15px;
 }
 // ===============HEADER
 
