@@ -12,8 +12,26 @@ export default {
   },
 
   methods: {
-    setOpenModal: function(name) {
-      name !== 'close' ? this.openModal = name : this.openModal = 'modals-close';
+    setModal: function() {
+      let windowHash = window.location.hash;
+      windowHash = windowHash.slice(1);
+      windowHash !== '' ? this.openModal = windowHash : this.openModal = 'modals-close';
+    }
+  },
+
+  created: function() {
+    this.setModal();
+  },
+
+  directives: {
+    toggleModal: {
+      inserted: function(el, binding) {
+        el.onclick = e => {
+          e.preventDefault();
+          toggleModal(binding.arg);
+          binding.value();
+        }
+      }
     }
   },
 
@@ -23,3 +41,13 @@ export default {
     recoveryFrame
   }
 }
+
+
+/**
+ * @constructor
+ * @toggleModal
+ */
+
+function toggleModal(modal) {
+  modal !== "close" ? window.location.hash = modal : window.location.hash = '';
+};
