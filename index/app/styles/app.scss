@@ -50,6 +50,10 @@ h1 {
   }
 }
 
+#sign {
+  display: none;
+}
+
 .my-body {
   &.recovery,
   &.signin,
@@ -79,6 +83,18 @@ h1 {
 
     h1 {
       color: white;
+    }
+
+    .main-container-video-and-svg-mask video {
+      transform: scale(2);
+    }
+
+    #bgr-video {
+      display: none;
+    }
+
+    #sign {
+      display: block;
     }
   }
 }
