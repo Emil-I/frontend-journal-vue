@@ -38,12 +38,12 @@
 
         <video id='bgr-video' autoplay playsinline muted loop preload poster="">
         <!-- <source src="./assets/videos/stock/Dodge-Tornado.webm" /> -->
-          <source src="./assets/videos/stock/space.mp4" />
+          <!-- <source src="./assets/videos/stock/space.mp4" /> -->
         </video>
-        
+
         <video id='sign' autoplay playsinline muted loop preload poster="">
         <!-- <source src="./assets/videos/stock/Dodge-Tornado.webm" /> -->
-          <source src="./assets/videos/stock/this_one.mp4" />
+          <!-- <source src="./assets/videos/stock/this_one.mp4" /> -->
         </video>
       </div>
 

@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import App from './app.vue'
-import envConfig from '../../config/env.config.js'
+// import envConfig from '../../config/env.config.js'
+
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
 
 Vue.config.productionTip = false
-
 // Записываю во Vue свой конфиг, что бы был доступен глобально
 // BUG: не работает при билде
 // Vue.envConfig = CONFIG;

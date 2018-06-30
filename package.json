@@ -5,22 +5,17 @@
   "author": "Emil Livingston>",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "html-webpack-harddisk-plugin": "^0.2.0",
-    "html-webpack-plugin": "^3.2.0",
-    "jquery": "^3.3.1",
     "lodash": "^4.17.10",
-    "postcss-loader": "^2.1.5",
-    "sass-loader": "^7.0.1",
-    "style-loader": "^0.21.0",
     "vue": "^2.5.16",
     "vue-axios": "^2.1.1",
     "vue-resource": "^1.5.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuelidate": "^0.7.4"
   },
   "devDependencies": {
     "autoprefixer": "^8.4.1",
@@ -31,7 +26,13 @@
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
+    "html-webpack-harddisk-plugin": "^0.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "jshint": "^2.9.5",
     "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "vue-loader": "^14.2.2",
     "vue-style-loader": "^4.1.0",
