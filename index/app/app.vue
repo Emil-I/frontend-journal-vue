@@ -16,6 +16,7 @@
     <!-- main-container-video-and-svg-mask START -->
     <section class="main-container-video-and-svg-mask">
       <div class="main-container-video-and-svg-mask__center">
+          <button @click="getPosts()" type="button">get pots</button>
       </div>
     </section>
     <!-- main-container-video-and-svg-mask END -->
