@@ -3,8 +3,11 @@ import {
   minLength,
   sameAs,
   email
-} from 'vuelidate/lib/validators';
+} from 'vuelidate/lib/validators'
 
+import {
+  HTTP
+} from '../../../../common/http/http-common'
 
 export default {
   name: 'signupFrame',
@@ -44,26 +47,29 @@ export default {
   methods: {
     errorHandlerForm: function () {
       this.$v.$touch();
-      if(this.$v.$invalid) {
+      if (this.$v.$invalid) {
         console.log(this.$v.$invalid);
         return true;
-      }else {
+      } else {
         return false;
       }
     },
 
-    send: function (data) {
-      return new Promise((resolve, reject) => {
-        if (!this.errorHandlerForm()) {
-          return resolve('sended');
-        } else {
-          return reject('not send');
-        }
-      });
+    send: async function (data) {
+      try {
+        
+        let request = await HTTP.get('users');
+        console.log(request.data);
+        return true;
+
+      } catch (error) {
+        console.log(error);
+        return false;
+      }
     },
 
     signup: function () {
-      if (this.errorHandlerForm()) return;
+      // if (this.errorHandlerForm()) return;
 
       let dataForm = {
         email: this.email,

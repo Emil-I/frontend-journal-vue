@@ -1,8 +1,9 @@
+// COMPONENTS
 import signinFrame from './components/signin/signin.vue'
 import signupFrame from './components/signup/signup.vue'
 import recoveryFrame from './components/recovery/recovery.vue'
-
-// v-toggleModal:close='setModal'
+// DIRECIVES
+import {ToggleModal} from '../../directives/toggle-modal.directive'
 
 export default {
   name: 'app',
@@ -26,15 +27,7 @@ export default {
   },
 
   directives: {
-    toggleModal: {
-      inserted: function(el, binding) {
-        el.onclick = e => {
-          e.preventDefault();
-          toggleModal(binding.arg);
-          binding.value();
-        }
-      }
-    }
+    ToggleModal
   },
 
   components: {
@@ -43,15 +36,3 @@ export default {
     recoveryFrame
   }
 }
-
-
-/**
- * @constructor
- * @toggleModal
- */
-
-function toggleModal(modal) {
-  let lastValModalHash = window.location.hash;
-  lastValModalHash = lastValModalHash.slice(1);
-  (modal !== "close" && modal !== lastValModalHash) ? window.location.hash = modal : window.location.hash = '';
-};
