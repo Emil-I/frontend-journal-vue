@@ -7,6 +7,7 @@ import axios from 'axios';
  * @param apiUrl
  * @param headers
  * @param token
+ * @param axios.create({})
  * @returns {*}
  * @constructor
  */
