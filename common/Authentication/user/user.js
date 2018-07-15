@@ -29,8 +29,12 @@ export class User {
         });
     }
 
-    getToken() {
+    get Token() {
         return this.token;
+    }
+
+    set Token(token) {
+        this.token = token;
     }
 
     // METHODS

@@ -11,6 +11,7 @@ export class Session {
         if (remember) {
             // recorde into cookies
             // set localStorage
+            this.session.token.remember = true;
         }
     }
 
@@ -22,7 +23,8 @@ export class Session {
 
     getTokenId() {
         // return 'sdsdsd4s5d4sds54ds54dsd5s';
-        return this.session.token && this.session.token.id;
+        // return this.session.token && this.session.token.id;
+        return this.session.token;
     }
 }
 

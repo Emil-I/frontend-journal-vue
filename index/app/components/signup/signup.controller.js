@@ -5,10 +5,6 @@ import {
   email
 } from 'vuelidate/lib/validators'
 
-import {
-  HTTP
-} from '../../../../common/http/http-common'
-
 export default {
   name: 'signupFrame',
 

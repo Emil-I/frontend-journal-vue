@@ -19,12 +19,21 @@ import {
   User
 } from '../../common/Authentication/user/user';
 
+import {
+  Session
+} from '../../common/Authentication/session/session';
+
+import {
+  ACL
+} from '../../common/acl/acl';
+
 export default {
   name: 'app',
 
   data: () => {
     return {
-      openModal: 'modals-close'
+      openModal: 'modals-close',
+      acl: new ACL
     }
   },
 
@@ -47,6 +56,32 @@ export default {
         console.log(err);
       }
 
+    },
+
+    startSession: function() {
+      const session = new Session;
+
+      let resp = {
+        data: {
+          api_token: 'apitoken111',
+          id: '153',
+          name: 'lmao'
+        }
+      }
+
+      session.start(resp, true);
+
+      console.log(session.getTokenId());
+
+      let user = {
+        role: 'admin',
+        name: 'Djon'
+      }
+
+      if(this.acl.isAdmin(user)) {
+        console.log('is admin');
+      }
+
     }
   },
 
@@ -57,6 +92,7 @@ export default {
 
     if (auth.isAuthenticated()) {
       console.log('to admin panel');
+      window.location = '/admin';
     }
   },
 

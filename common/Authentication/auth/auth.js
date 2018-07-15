@@ -18,6 +18,6 @@ export class Auth {
     isAuthenticated() {
         // console.log(this.token);
         console.log(this.session.getTokenId());
-        return true;
+        return false;
     }
 }
