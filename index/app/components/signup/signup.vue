@@ -60,8 +60,6 @@
 
         <div class="modal-frame-form__fields">
           <button class='modal-frame-form__button' type="submit" name="button">Registration</button>
-
-          <button v-on:click='send' class='modal-frame-form__button' type="button">GET USERS</button>
         </div>
       </div>
 

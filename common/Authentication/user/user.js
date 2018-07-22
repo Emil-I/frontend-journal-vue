@@ -1,6 +1,7 @@
 'use strict';
 
 import axios from 'axios';
+import qs from 'qs';
 
 /**
  * @User resource
@@ -13,9 +14,10 @@ import axios from 'axios';
  */
 export class User {
     constructor() {
-        this.apiUrl = 'https://jsonplaceholder.typicode.com/';
-        // this.apiUrl = 'http://127.0.0.1:3003/';
+        // this.apiUrl = 'https://jsonplaceholder.typicode.com/';
+        this.apiUrl = 'http://127.0.0.1:3003/';
         this.headers = {
+            'accept': 'application/json',
             'Content-type': 'application/x-www-form-urlencoded'
         }
         this.token = null;
@@ -40,7 +42,7 @@ export class User {
 
     // METHODS
     me() {
-        return this.query.get('users');
+        return this.query.get('/users');
     }
 
     onePost(id) {
@@ -51,7 +53,12 @@ export class User {
         return this.query.get('/posts');
     }
 
-    signUp() {}
-    signIn() {}
+    signup(data) {
+        return this.query.post('/register', qs.stringify(data));
+    }
+
+    signin(data) {
+        return this.query.post('/login', qs.stringify(data));
+    }
 
 }

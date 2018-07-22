@@ -4,6 +4,10 @@ import {
   email
 } from 'vuelidate/lib/validators';
 
+import {
+  User
+} from '../../../../common/Authentication/user/user';
+
 export default {
   name: 'signinFrame',
 
@@ -14,7 +18,9 @@ export default {
   data: () => {
     return {
       email: null,
-      password: null
+      password: null,
+
+      user: new User()
     }
   },
 
@@ -30,15 +36,32 @@ export default {
   },
 
   methods: {
-    checkForm: function() {
-      return true;
+    checkForm: function () {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        console.log(this.$v.$invalid);
+        return true;
+      } else {
+        return false;
+      }
     },
 
-    send: function() {
+    signin: async function () {
+      if(this.checkForm()) return;
 
-    },
+      let data = {
+        email: this.email,
+        password: this.password
+      }
 
-    signin: function() {
+      try {
+        
+        let user = await this.user.signin(data);
+        console.log(user.data);
+
+      } catch (error) {
+        console.log(error);
+      }
 
     }
   }
