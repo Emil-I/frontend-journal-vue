@@ -1,30 +1,65 @@
 'use strict';
 
+import Cookies from 'js-cookie';
+
 export class Session {
     constructor() {
-        this.session = {};
+        this.session = {
+            token: null,
+            tokenKey: 'vueFirstAppToken'
+        };
+
+        let json = window.localStorage.getItem(this.session.tokenKey);
+
+        if (!json) {
+            json = Cookies.get(this.session.tokenKey);
+        }
+
+        try {
+            this.session.token = JSON.parse(json);
+        } catch (err) {}
     }
+
+    /**
+     *
+     * @param response
+     * @param remember
+     */
 
     start(response, remember) {
         this.session.token = authResultToTken(response);
 
+        Cookies.set(this.session.tokenKey, this.session.token, {
+            path: '/'
+        });
+
         if (remember) {
-            // recorde into cookies
-            // set localStorage
-            this.session.token.remember = true;
+            window.localStorage.setItem(this.session.tokenKey, this.session.token);
         }
     }
 
+    /**
+     *
+     * Clear cookies and localStorage
+     */
+
     destroy() {
         this.session.token = null;
-        // clear cookies
-        // remove token with localStorage
+
+        Cookies.remove(this.session.tokenKey, {
+            path: '/'
+        });
+
+        window.localStorage.removeItem('tokenKey');
     }
 
+    /**
+     *
+     * @returns {boolean|*|null}
+     */
+
     getTokenId() {
-        // return 'sdsdsd4s5d4sds54ds54dsd5s';
-        // return this.session.token && this.session.token.id;
-        return this.session.token;
+        return this.session.token && this.session.token.id;
     }
 }
 

@@ -33,7 +33,8 @@ export default {
   data: () => {
     return {
       openModal: 'modals-close',
-      acl: new ACL
+      acl: new ACL(),
+      session: new Session()
     }
   },
 
@@ -59,29 +60,7 @@ export default {
     },
 
     startSession: function() {
-      const session = new Session;
-
-      let resp = {
-        data: {
-          api_token: 'apitoken111',
-          id: '153',
-          name: 'lmao'
-        }
-      }
-
-      session.start(resp, true);
-
-      console.log(session.getTokenId());
-
-      let user = {
-        role: 'admin',
-        name: 'Djon'
-      }
-
-      if(this.acl.isAdmin(user)) {
-        console.log('is admin');
-      }
-
+      // code...
     }
   },
 

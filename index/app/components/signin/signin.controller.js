@@ -7,6 +7,9 @@ import {
 import {
   User
 } from '../../../../common/Authentication/user/user';
+import {
+  Session
+} from '../../../../common/Authentication/session/session';
 
 export default {
   name: 'signinFrame',
@@ -20,7 +23,8 @@ export default {
       email: null,
       password: null,
 
-      user: new User()
+      user: new User(),
+      session: new Session()
     }
   },
 
@@ -56,8 +60,10 @@ export default {
 
       try {
         
-        let user = await this.user.signin(data);
-        console.log(user.data);
+        let response = await this.user.signin(data);
+        console.log(response.data);
+
+        // this.session.start(response, true);
 
       } catch (error) {
         console.log(error);
