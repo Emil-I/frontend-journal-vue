@@ -60,6 +60,7 @@
 
         <div class="modal-frame-form__fields">
           <button class='modal-frame-form__button' type="submit" name="button">Registration</button>
+          <button class='modal-frame-form__button' @click='test()' type="button" name="button">TST</button>
         </div>
       </div>
 

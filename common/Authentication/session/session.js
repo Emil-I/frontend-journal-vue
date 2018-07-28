@@ -9,6 +9,8 @@ export class Session {
             tokenKey: 'vueFirstAppToken'
         };
 
+        
+        // TODO протестировать COOKIES
         let json = window.localStorage.getItem(this.session.tokenKey);
 
         if (!json) {
@@ -17,7 +19,9 @@ export class Session {
 
         try {
             this.session.token = JSON.parse(json);
-        } catch (err) {}
+        } catch (err) {
+            // console.log(err)
+        }
     }
 
     /**
@@ -34,7 +38,7 @@ export class Session {
         });
 
         if (remember) {
-            window.localStorage.setItem(this.session.tokenKey, this.session.token);
+            window.localStorage.setItem(this.session.tokenKey, JSON.stringify(this.session.token));
         }
     }
 
@@ -50,7 +54,7 @@ export class Session {
             path: '/'
         });
 
-        window.localStorage.removeItem('tokenKey');
+        window.localStorage.removeItem(this.session.tokenKey);
     }
 
     /**

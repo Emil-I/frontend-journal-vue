@@ -1,18 +1,10 @@
 'use strict';
 
-import {
-    Session
-} from '../session/session';
-
-import {
-    User
-} from '../user/user';
-
 export class Auth {
-    constructor() {
+    constructor(user, session) {
         this.promise;
-        this.user = new User;
-        this.session = new Session;
+        this.user = user;
+        this.session = session;
     }
 
     getUser(reload) {
@@ -47,7 +39,7 @@ export class Auth {
     }
 
     isAuthenticated() {
-        return Boolean(this.session.getTokenId());
-        // return !!(this.session.getTokenId());
+        let isTokenId = this.session.getTokenId();
+        return Boolean(isTokenId);
     }
 }

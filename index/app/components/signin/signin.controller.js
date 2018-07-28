@@ -4,13 +4,6 @@ import {
   email
 } from 'vuelidate/lib/validators';
 
-import {
-  User
-} from '../../../../common/Authentication/user/user';
-import {
-  Session
-} from '../../../../common/Authentication/session/session';
-
 export default {
   name: 'signinFrame',
 
@@ -21,10 +14,7 @@ export default {
   data: () => {
     return {
       email: null,
-      password: null,
-
-      user: new User(),
-      session: new Session()
+      password: null
     }
   },
 
@@ -51,7 +41,8 @@ export default {
     },
 
     signin: async function () {
-      if(this.checkForm()) return;
+
+      if (this.checkForm()) return;
 
       let data = {
         email: this.email,
@@ -59,11 +50,16 @@ export default {
       }
 
       try {
-        
-        let response = await this.user.signin(data);
-        console.log(response.data);
 
-        // this.session.start(response, true);
+        let state = this.$store.state;
+        let session = state.session;
+        let user = state.user;
+        let response = await user.signin(data);
+
+        if (response) {
+          session.start(response, true);
+          window.location = '/admin';
+        }
 
       } catch (error) {
         console.log(error);

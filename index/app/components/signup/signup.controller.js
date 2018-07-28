@@ -5,10 +5,6 @@ import {
   email
 } from 'vuelidate/lib/validators'
 
-import {
-  User
-} from '../../../../common/Authentication/user/user'
-
 export default {
   name: 'signupFrame',
 
@@ -21,9 +17,7 @@ export default {
       email: null,
       name: null,
       password: null,
-      password_confirm: null,
-
-      user: new User()
+      password_confirm: null
     }
   },
 
@@ -57,6 +51,11 @@ export default {
       }
     },
 
+    test: function() {
+      let user = this.$store.state.user;
+      console.log(user);
+    },
+
     signup: async function () {
       if (this.errorHandlerForm()) return;
 
@@ -64,14 +63,13 @@ export default {
         email: this.email,
         name: this.name,
         password: this.password
-        // password_confirm: this.password_confirm
       }
 
 
       try {
-
-        let signup = await this.user.signup(dataForm);
-        console.log(signup);
+        let user = this.$store.state.user;
+        let signup = await user.signup(dataForm);
+        console.log(signup)
 
       } catch (error) {
         console.log(error);

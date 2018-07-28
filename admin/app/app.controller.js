@@ -10,7 +10,8 @@ export default {
 
     data: () => {
         return {
-            data: 'hello admin'
+            data: 'hello admin',
+            auth: new Auth()
         }
     },
 
@@ -18,11 +19,6 @@ export default {
 
     created: function() {
         console.log(this.data);
-        const auth = new Auth;
-
-        if (!auth.isAuthenticated()) {
-            window.location = '/#signup';
-        }
     }
 
 
