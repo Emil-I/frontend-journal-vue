@@ -1,17 +1,13 @@
 'use strict';
 
-// SERVICES
-import {
-    Auth
-} from '../../common/Authentication/auth/auth';
+import rootComponent from './components/root/root.vue';
 
 export default {
     name: 'appAdmin',
 
     data: () => {
         return {
-            data: 'hello admin',
-            auth: new Auth()
+            data: 'hello admin'
         }
     },
 
@@ -19,7 +15,10 @@ export default {
 
     created: function() {
         console.log(this.data);
-    }
+    },
 
+    components: {
+        rootComponent
+    }
 
 }

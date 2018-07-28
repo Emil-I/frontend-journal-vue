@@ -1,8 +1,17 @@
 <template>
-    <div class="main-wrapper" style="text-align:center;padding-top:50px;">
-        <h1>Admin panel</h1>
+    <div class="main-wrapper">
+        <rootComponent></rootComponent>
     </div>
 </template>
 
 
+
+<!--=====================================================-->
+<!-- CONTROLLER -->
 <script src="./app.controller.js"></script>
+
+<!-- STYLES -->
+<style lang="scss">
+//@import "./styles/fonts.scss";
+@import './styles/admin.scss';
+</style>
