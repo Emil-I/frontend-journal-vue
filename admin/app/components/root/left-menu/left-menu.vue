@@ -3,6 +3,12 @@
         <div>
             {{menuTitle}}
         </div>
+
+        <ul>
+            <li>
+                <router-link to='/dashboard'>Dashboard</router-link>
+            </li>
+        </ul>
     </div>
 </template>
 

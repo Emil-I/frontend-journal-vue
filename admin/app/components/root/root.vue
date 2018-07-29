@@ -7,7 +7,9 @@
         <!--MENU END-->
 
         <!--CONTENT START-->
-        <div class="content-box"></div>
+        <div class="content-box">
+            <router-view class="view"></router-view>
+        </div>
         <!--CONTENT END-->
     </div>
 </template>
